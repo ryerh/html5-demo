@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>windo.JSON</title>
+</head>
+<body>
+	<script>
+		var json_string = '{ "title": "HTML5 Demo", "author": "ryer" }';
+		var obj = JSON.parse(json_string);
+
+		console.log(json_string, obj);
+
+		obj.date = '2015-09-20';
+
+		console.log(JSON.stringify(obj));
+	</script>
+</body>
+</html>
