@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Canvas API</title>
+	<style>
+		canvas { background-color: #333; }
+	</style>
+</head>
+<body>
+	<canvas id="my-canvas" width="400" height="200">
+		Your browser doesn't support canvs!!!
+	</canvas>
+
+	<script>
+		var canvas = document.querySelector('#my-canvas');
+		var context = canvas.getContext('2d');
+		context.strokeStyle = 'yellow';
+		context.fillStyle = 'yellow';
+
+		drawLine(0, 10, 100, 10);
+		function drawLine(x1, y1, x2, y2) {
+			context.beginPath();
+			context.moveTo(x1, y1);
+			context.lineTo(x2, y2);
+			context.stroke();
+		}
+	</script>
+</body>
+</html>
