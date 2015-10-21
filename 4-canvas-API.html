@@ -4,26 +4,51 @@
 	<meta charset="UTF-8">
 	<title>Canvas API</title>
 	<style>
-		canvas { background-color: #333; }
+		html, body { margin: 0; padding: 0; width: 100%; height: 100%; }
+		canvas { background-color: #e1e2e3; }
 	</style>
 </head>
 <body>
-	<canvas id="my-canvas" width="400" height="200">
+	<canvas id="my-canvas">
 		Your browser doesn't support canvs!!!
 	</canvas>
 
 	<script>
 		var canvas = document.querySelector('#my-canvas');
 		var context = canvas.getContext('2d');
-		context.strokeStyle = 'yellow';
-		context.fillStyle = 'yellow';
+		var bodyWidth = document.body.offsetWidth;
+		var bodyHeight = document.body.offsetHeight;
+		var image = null;
 
-		drawLine(0, 10, 100, 10);
+		canvas.setAttribute('width', bodyWidth);
+		canvas.setAttribute('height', bodyHeight * 2);
+
+		drawLine(0, 10, bodyWidth, 10);
+		drawRect(0, 15, bodyWidth, 30);
+
+		loadImage('img/lena.jpg').then(function() {
+			context.drawImage(image, 0, 50);
+		});
+
 		function drawLine(x1, y1, x2, y2) {
 			context.beginPath();
 			context.moveTo(x1, y1);
 			context.lineTo(x2, y2);
 			context.stroke();
+		}
+
+		function drawRect(x, y, width, height) {
+			context.beginPath();
+			context.rect(x, y, width, height);
+			context.fill()
+		}
+
+		function loadImage(src) {
+			return new Promise(function(resolve, reject) {
+				image = new Image();
+				image.src = src;
+				image.onload = resolve;
+			});
 		}
 	</script>
 </body>

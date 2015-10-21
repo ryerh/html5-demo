@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Web Workers</title>
+</head>
+<body>
+	<script id="worker" type="text/workers">
+		var a = 100;
+	</script>
+	<script>
+		var workerCode = document.getElementById('worker').innerHTML;
+		var workerBlob = new Blob();
+	</script>
+</body>
+</html>
